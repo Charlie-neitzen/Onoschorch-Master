@@ -5,6 +5,7 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public float health = 50f;
+    public AudioSource[] zombieSounds;
 
     public void TakeDamage(float amount)
     {
@@ -20,5 +21,9 @@ public class Target : MonoBehaviour
     {
         Destroy(gameObject);
         PointSystem.points += 20;
+    }
+    private void Start()
+    {
+        zombieSounds[Random.Range(0, 2)].Play();
     }
 }

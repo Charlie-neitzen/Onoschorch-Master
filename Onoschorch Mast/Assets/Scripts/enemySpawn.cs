@@ -9,7 +9,7 @@ public class enemySpawn : MonoBehaviour
     private int zPos;
     public int enemyCount;
     public int toSpawn = 20;
-    public AudioSource[] zombieSounds;
+    public int enabled = 1;
 
     void Start()
     {
@@ -18,23 +18,46 @@ public class enemySpawn : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (PointSystem.points >= 250)
+        {
+            enabled = 0;
+            DestroyAll();
+        }
+    }
+
     IEnumerator EnemyDrop()
     {
         while (enemyCount < toSpawn)
         {
+
             xPos = Random.Range(12, 90);
             zPos = Random.Range(32, 87);
             Instantiate(enemy, new Vector3(xPos, 10, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
-            zombieSounds[Random.Range(0,2)].Play();
             enemyCount += 1;
         }
     }
 
     void TimedEnemyDrop()
     {
-         xPos = Random.Range(2, 64);
-         zPos = Random.Range(10, 72);
-         Instantiate(enemy, new Vector3(xPos, 10, zPos), Quaternion.identity);
+        if (enabled == 1)
+        {
+            xPos = Random.Range(2, 64);
+            zPos = Random.Range(10, 72);
+            Instantiate(enemy, new Vector3(xPos, 10, zPos), Quaternion.identity);
+        }
+    }
+
+    void DestroyAll()
+    {
+        GameObject[] enemies;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach(GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
     }
 }
