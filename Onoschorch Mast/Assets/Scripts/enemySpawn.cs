@@ -9,6 +9,7 @@ public class enemySpawn : MonoBehaviour
     private int zPos;
     public int enemyCount;
     public int toSpawn = 20;
+    public AudioSource[] zombieSounds;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class enemySpawn : MonoBehaviour
             zPos = Random.Range(32, 87);
             Instantiate(enemy, new Vector3(xPos, 10, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
+            zombieSounds[Random.Range(0,2)].Play();
             enemyCount += 1;
         }
     }
