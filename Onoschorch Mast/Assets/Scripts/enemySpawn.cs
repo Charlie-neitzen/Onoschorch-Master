@@ -13,7 +13,7 @@ public class enemySpawn : MonoBehaviour
     void Start()
     {
         StartCoroutine(EnemyDrop());
-        InvokeRepeating("TimedEnemyDrop", 1f, 1f);
+        InvokeRepeating("TimedEnemyDrop", 5f, 2f);
 
     }
 
