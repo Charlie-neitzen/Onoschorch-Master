@@ -5,9 +5,7 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public float health = 50f;
-    private int xPos;
-    private int zPos;
-    private int kills = 0;
+
 
     public void TakeDamage(float amount)
     {
@@ -15,7 +13,6 @@ public class Target : MonoBehaviour
         if (health <= 0f)
         {
             Die();
-            kills++;
         }
 
     }
@@ -23,6 +20,5 @@ public class Target : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
-        Debug.Log($"{kills} kills.");
     }
 }
