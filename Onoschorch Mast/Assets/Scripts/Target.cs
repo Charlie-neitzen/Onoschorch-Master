@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public float health = 50f;
+    public float health = 25f;
     public AudioSource[] zombieSounds;
+    private int healthUpgrade = 100;
+
+    private void Update()
+    {
+        if (PointSystem.points >= healthUpgrade)
+        {
+            healthUpgrade += 100;
+            health += 25; // increases enemy health by 25 every
+                            // 100 points
+        }
+    }
 
     public void TakeDamage(float amount)
     {
@@ -21,6 +32,7 @@ public class Target : MonoBehaviour
     {
         Destroy(gameObject);
         PointSystem.points += 20;
+        PointSystem.totalPoints += 20;
     }
     private void Start()
     {

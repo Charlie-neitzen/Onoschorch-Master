@@ -7,24 +7,15 @@ public class enemySpawn : MonoBehaviour
     public GameObject enemy;
     private int xPos;
     private int zPos;
-    public int enemyCount;
+    private int enemyCount;
     public int toSpawn = 20;
-    public int enabled = 1;
+    private int enabled = 1;
 
     void Start()
     {
         StartCoroutine(EnemyDrop());
         InvokeRepeating("TimedEnemyDrop", 3f, 1f);
 
-    }
-
-    private void Update()
-    {
-        if (PointSystem.points >= 250)
-        {
-            enabled = 0;
-            DestroyAll();
-        }
     }
 
     IEnumerator EnemyDrop()
@@ -59,5 +50,8 @@ public class enemySpawn : MonoBehaviour
         {
             Destroy(enemy);
         }
+
+        PointSystem.points = 0;
+
     }
 }
