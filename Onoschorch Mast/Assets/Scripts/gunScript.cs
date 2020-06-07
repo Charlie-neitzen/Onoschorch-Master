@@ -16,7 +16,7 @@ public class gunScript : MonoBehaviour
 
     public GameObject impactEffect;
     public Animator animator;
-    private TextMeshProUGUI ammoDisplay;
+    public TextMeshProUGUI ammoDisplay;
     public Camera fpsCam;
 
     private bool isReloading;
@@ -27,7 +27,6 @@ public class gunScript : MonoBehaviour
 
     private void Start()
     {
-        ammoDisplay = FindObjectOfType<TextMeshProUGUI>();
         if (currentAmmo == -1)
         {
             currentAmmo = maxAmmo;

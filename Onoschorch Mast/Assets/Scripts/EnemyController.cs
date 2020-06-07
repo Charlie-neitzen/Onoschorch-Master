@@ -62,6 +62,7 @@ public class EnemyController : MonoBehaviour
 
     public void KillPlayer()
     {
+        PointSystem.points = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
