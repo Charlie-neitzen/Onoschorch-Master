@@ -7,6 +7,7 @@ public class PointSystem : MonoBehaviour
 {
     public static int totalPoints;
     public static int points;
+    public static int hasExtendedMag;
     public TextMeshProUGUI pointboard;
 
     public void Start()

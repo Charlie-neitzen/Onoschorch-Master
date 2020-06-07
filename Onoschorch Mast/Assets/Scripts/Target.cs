@@ -6,13 +6,13 @@ public class Target : MonoBehaviour
 {
     public float health = 25f;
     public AudioSource[] zombieSounds;
-    private int healthUpgrade = 100;
+    private int healthUpgrade = 250;
 
     private void Update()
     {
         if (PointSystem.points >= healthUpgrade)
         {
-            healthUpgrade += 100;
+            healthUpgrade += 250;
             health += 25; // increases enemy health by 25 every
                             // 100 points
         }

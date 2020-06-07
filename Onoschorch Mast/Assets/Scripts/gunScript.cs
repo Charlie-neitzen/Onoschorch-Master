@@ -10,7 +10,7 @@ public class gunScript : MonoBehaviour
     private float range = 100f;
     private float impactForce = 30f;
     private float fireRate = 15f;
-    private int maxAmmo = 30;
+    public static int maxAmmo = 30;
     private int currentAmmo = -1;
     private float reloadTime = 2f;
 
@@ -30,6 +30,11 @@ public class gunScript : MonoBehaviour
         if (currentAmmo == -1)
         {
             currentAmmo = maxAmmo;
+        }
+
+        if (PointSystem.hasExtendedMag == 1)
+        {
+            maxAmmo += 10;
         }
     }
 
